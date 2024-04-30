@@ -1,10 +1,10 @@
-const { pipeline } = require("@xenova/transformers");
 import { pipeline } from "@xenova/transformers";
-require("dotenv").config();
+import { Client, IntentsBitField} from "discord.js";
+import dotenv from "dotenv";
 
-let pipe = await pipeline("text-generation", model="microsoft/phi-1_5");
+dotenv.config();
 
-const { Client, IntentsBitField} = require("discord.js");
+let pipe = await pipeline("text-generation", "microsoft/phi-1_5");
 
 const client = new Client({
     intents: [
