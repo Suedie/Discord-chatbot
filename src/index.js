@@ -1,10 +1,10 @@
-import { pipeline } from "@xenova/transformers";
-import { Client, IntentsBitField} from "discord.js";
-import dotenv from "dotenv";
+import { pipeline } from '@xenova/transformers';
+import { Client, IntentsBitField} from 'discord.js';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
-let pipe = await pipeline("text-generation", "microsoft/phi-1_5");
+let pipe = await pipeline('text-generation', 'microsoft/phi-1_5');
 
 const client = new Client({
     intents: [
@@ -15,11 +15,11 @@ const client = new Client({
     ],
 });
 
-client.on("messageCreate", function (message) {
+client.on('messageCreate', function (message) {
     if (message.author.bot) return;
 
-    const userQuery = message.content;
-    const generatedText = pipe._call(prompt);
+    const generatedText = pipe._call(`${message.content}`);
+
     return message.reply(generatedText);
   });
 
