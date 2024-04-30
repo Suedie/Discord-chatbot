@@ -4,7 +4,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const pipe = new TextGenerationPipeline('microsoft/phi-1_5');
+let pipe = await pipeline('text-generation', 'Xenova/phi-1_5_dev');
+//const pipe = new TextGenerationPipeline('microsoft/phi-1_5');
 
 const client = new Client({
     intents: [
@@ -19,7 +20,7 @@ client.on('messageCreate', function (message) {
     if (message.author.bot) return;
     else if (message.mentions.has(client.user.id)) {
         const text = message.content.replace(/<.*>/, '').trim();
-        const output = pipe(text);
+        const output = pipe._call(text);
         return message.reply(text);
     } else return;
   });
