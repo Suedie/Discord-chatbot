@@ -2,6 +2,7 @@ import { TextGenerationPipeline, pipeline } from '@xenova/transformers';
 import { Client, IntentsBitField} from 'discord.js';
 import dotenv from 'dotenv';
 
+//Loads token from external file
 dotenv.config();
 
 let pipe = await pipeline('text-generation', 'Xenova/phi-1_5_dev');
@@ -16,7 +17,7 @@ const client = new Client({
 });
 
 //defines a chat template
-const chat = [
+let chat = [
     { role: "System", content: "I am a honest chatbot." },
   ]
 
