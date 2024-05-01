@@ -7,7 +7,7 @@ dotenv.config();
 
 
 //link to language model from hugging face
-//https://huggingface.co/models?pipeline_tag=text-generation&library=transformers.js
+// https://huggingface.co/models?pipeline_tag=text-generation&library=transformers.js
 const source = 'Xenova/phi-1_5_dev';
 
 const tokenizer = await AutoTokenizer.from_pretrained(source);
@@ -41,7 +41,7 @@ client.on('messageCreate', async function (message) {
 
         //Uses default chat template
         //Generation prompt adds a "assistant" JSON object to the list of messages and the model will generate the content as its response
-        const tokenized_chat = tokenizer.apply_chat_template(chat, {add_generation_prompt: true, tokenize: true});
+        const tokenized_chat = tokenizer.apply_chat_template(chat, {add_generation_prompt: true, tokenize: true, return_tensor: "np"});
 
         //await resolves the promise object returned from generate
         //should generate a response but for some reason does nothing
