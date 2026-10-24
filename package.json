@@ -1,7 +1,7 @@
 {
   "name": "discord-chatbot",
   "version": "1.0.0",
-  "description": "An attempt to create a discord chatbot that integrates the phi-1.5 model",
+  "description": "An attempt to create a discord chatbot",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,5 +18,14 @@
   "allowScripts": {
     "onnxruntime-node@1.30.0": true,
     "protobufjs@7.6.6": true
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Suedie/Discord-chatbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Suedie/Discord-chatbot/issues"
+  },
+  "homepage": "https://github.com/Suedie/Discord-chatbot#readme"
 }
