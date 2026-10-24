@@ -1,4 +1,4 @@
-import { AutoModel, AutoModelForCausalLM, AutoTokenizer, pipeline } from '@xenova/transformers';
+import { AutoModel, AutoModelForCausalLM, AutoTokenizer, pipeline } from '@huggingface/transformers';
 import { Client, IntentsBitField} from 'discord.js';
 import dotenv from 'dotenv';
 
@@ -8,10 +8,11 @@ dotenv.config();
 
 //link to language model from hugging face
 // https://huggingface.co/models?pipeline_tag=text-generation&library=transformers.js
-const source = 'Xenova/phi-1_5_dev';
+const source = 'onnx-community/Qwen2.5-0.5B-Instruct-abliterated-ONNX';
 
 const tokenizer = await AutoTokenizer.from_pretrained(source);
-const model = await AutoModelForCausalLM.from_pretrained(source);
+//q8 keeps the download at ~0.5 GB (default fp32 is ~2 GB) and is fast on cpu
+const model = await AutoModelForCausalLM.from_pretrained(source, { dtype: 'q8' });
 
 const client = new Client({
     intents: [
